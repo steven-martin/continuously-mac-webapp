@@ -1,0 +1,30 @@
+.info {
+    width: 300px;
+    margin: 0px;
+    float: left;
+    padding: 0px 20px;
+}
+
+.app_info {
+    margin: 20px 0px;
+    display: none;
+}
+
+
+h1 {
+    font-family: HelveticaNeue, Verdana, Sans-Serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #777777;
+    margin: 10px 0px;
+}
+
+p {
+    font-family: Helvetica, Verdana, Sans-Serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    color: #808080;
+    margin: 10px 0px;
+}

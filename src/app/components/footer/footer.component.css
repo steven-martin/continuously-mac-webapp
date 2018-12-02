@@ -1,0 +1,16 @@
+footer {
+    width: 300px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+p {
+    font-family: Verdana, Sans-Serif;
+    font-size: 12px;
+    color: #82828A;
+}
+
+a {
+    text-decoration: underline;
+    color:  #666;
+}

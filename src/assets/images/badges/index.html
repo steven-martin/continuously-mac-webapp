@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Continuously Mac</title>
+ <meta name="viewport" content="width=375, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+ <meta name="apple-mobile-web-app-status-bar-style" content="white">
+ <link rel='stylesheet' type='text/css' href='style.css' />
+ <link rel="apple-touch-icon" href="icon.png"/>
+ <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<div id="header">
+    <div id="header_content">
+        <div id="header_image_frame">
+            <img src="header.png" id="header_image">
+        </div>
+    </div>
+</div>
+<div id="content_window"></div>
+
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "/api/continuously_mac/1.0/headlines/";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        myFunction(myArr);
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+
+        this_tag_style = arr[i].tags;
+        //this_tag_style = this_tag_style.replace(/\s/g, '');
+        //if (arr[i].tags == "") { arr[i].tags = "Apple"; }
+
+        //var re = /(\w+)\s(\w+)/;
+        //var str = 'John Smith';
+        //var newstr = str.replace(re, '$2, $1');
+
+        this_article_description = arr[i].article_description + " ";
+
+        out += ' <a href="' + arr[i].article_link + '">';
+        out += ' <div class="content_article">';
+        if (arr[i].article_photo != "") {
+            out += '  <div class="article_image_container">';
+            out += '   <img src="' + arr[i].article_photo + '" class="article_image crop">';
+            out += '  </div>';
+            out += '  <div class="badge_news_container">';
+            out += '   <img src="badges/' + arr[i].badge + '.png" class="badge_image">';
+            out += '  </div>';
+            out += '  <div class="badge_description_container">';
+            out += '  <span style="color:#' + arr[i].badge_colour + ';">' + arr[i].tags + '</span>';
+            out += '  </div>';
+        } else {
+            out += '  <div class="article_image_container">';
+            out += '   <img src="blank.png" class="article_image crop">';
+            out += '  </div>';
+            out += '  <div class="badge_news_container">';
+            out += '   <img src="badges/' + arr[i].badge + '.png" class="badge_image">';
+            out += '  </div>';
+            out += '  <div class="badge_description_container">';
+            out += '  <span style="color:#' + arr[i].badge_colour + ';">' + arr[i].tags + '</span>';
+            out += '  </div>';  
+        }
+        out += '   <div class="article_text">';
+        out += '    <div class="article_description">';
+        out += '     <p>' + this_article_description + '</p>';
+        out += '    </div>'
+        out += '    <div class="article_source_section">';
+        out += '     <img src="' + arr[i].source_photo + '" class="article_byline_image">';
+        out += '     <p>' + arr[i].source_name + '<br>';
+        out += '     <span class="post">Time not available in Storyboard</span></p>';
+        out += '    </div>';
+        out += '   </div>';
+        out += ' </div>';
+        out += '</a>';
+        
+        
+    }
+    document.getElementById("content_window").innerHTML = out;
+
+
+    $('.crop').each(function(i, item) {
+
+        var div_height = $(item).parent().height();
+        var div_width = $(item).parent().width();
+        var img_width = $(item).width();
+        var img_height = $(item).height();
+        var img_src = $(item).attr('src');
+
+        $(item).load(function() {
+            $(item).css({'height': 'auto', 'width': div_width });
+            var div_height = $(item).height();
+            $(item).parent().css({'height': div_height, 'width': div_width });
+        }).attr('src', img_src);
+
+    });
+
+}
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

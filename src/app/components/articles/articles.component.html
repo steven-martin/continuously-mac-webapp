@@ -1,0 +1,25 @@
+<div class="articles">
+  <div class="article" *ngFor="let article of articles">
+      <a href="{{ article.article_link }}">
+      <div class="article_image_container">
+        <img src="{{ article.article_photo }}" class="article_image">
+      </div>
+      <div class="badge_news_container">
+        <img src="/assets/images/badges/{{ article.category_badge }}.png" class="badge_image">
+      </div>
+      <div class="badge_description_container">
+        <span>{{ article.category }}</span>
+      </div>
+      <div class="article_text_container">
+        <div class="article_description">
+          <p>{{ article.article_description }}</p>
+        </div>
+        <div class="article_source_section">
+          <img src="{{ article.source_photo }}" class="article_byline_image">
+          <p>{{ article.source_name }}<br>
+          <span class="post">{{ article.date | timeAgo }}</span></p>
+        </div>
+      </div>
+    </a>
+  </div>  
+</div>
