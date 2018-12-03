@@ -20,7 +20,7 @@ npm run start
 
 This will start the dev server on `http://localhost:4200/`, connecting to the API at `http://api.continuously-mac.com`.
 
-> You can change the location of the API in the environments file. 
+> If you wish to run both the webapp and the API locally then you will need to install the [dedicated API](https://github.com/steven-martin/continuously-mac-api) and update the API url. You can change the location of the API in the environments file. 
 
 ## Development
 
