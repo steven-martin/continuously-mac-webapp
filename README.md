@@ -7,7 +7,7 @@ No complex categories, just a simple list of great Apple news.
 ## Features
 
 * The latest apple news from the very best Tech Journalists.
-* Articles are collected from a dedicated API, which is updated every 15 minutes.
+* Articles are collected from a [dedicated API](https://github.com/steven-martin/continuously-mac-api), which is updated every 15 minutes.
 
 ## Quick Start
 
