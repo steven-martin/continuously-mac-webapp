@@ -38,9 +38,4 @@ Run `npm run test-report` to produce a unit test coverage report and will server
 
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-### Deployment
-
-Run `npm run deploy` to deploy the app to AWS S3 bucket stated in the `deploy/` directory.
-
-> An AWSCLI 'dev profile' is requred before hand.
 
