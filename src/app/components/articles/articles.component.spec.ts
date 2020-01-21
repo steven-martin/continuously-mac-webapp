@@ -9,6 +9,24 @@ import { InfoComponent } from '../info/info.component';
 import { TimeAgoPipe } from '../../pipes/time-ago/time-ago.pipe';
 
 import { ArticleService } from '../../services/article/article.service';
+import { Article } from 'src/app/model/article';
+import { of } from 'rxjs';
+
+const articleServiceSpy = jasmine.createSpyObj('ArticleService', ['getArticles']);
+const mock: Article[] = [{
+  source_name: 'mock',
+  source_photo: 'http://mock.com/source_photo',
+  article_description: 'this is a mock',
+  article_link: 'http://mock.com/',
+  article_photo: 'http://mock.com/photo',
+  date: 'today',
+  timestamp: 1,
+  score: 100,
+  category: 'mock',
+  category_badge: 'mock',
+  tags: ''
+}];
+articleServiceSpy.getArticles.and.returnValue(of(mock));
 
 describe('ArticlesComponent', () => {
   let component: ArticlesComponent;
@@ -27,7 +45,7 @@ describe('ArticlesComponent', () => {
         HttpClientModule
       ],
       providers: [
-        ArticleService
+        {provide: ArticleService, useValue: articleServiceSpy}
       ]
     })
     .compileComponents();
@@ -42,6 +60,7 @@ describe('ArticlesComponent', () => {
   it('should create', async(() => {
     expect(component).toBeTruthy();
   }));
+
   it('should have at least one valid article', async(() => {
     expect(Object.keys(component.articles[0])).toContain('source_name');
     expect(Object.keys(component.articles[0])).toContain('source_photo');

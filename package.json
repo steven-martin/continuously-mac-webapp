@@ -17,10 +17,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --code-coverage",
-    "test-report": "http-server -c-1 -o -p 9875 ./coverage",
+    "test": "ng test",
+    "test:headless": "ng test --browsers ChromeHeadless",
+    "test:coverage": "ng test --code-coverage --browsers ChromeHeadless",
+    "test:report": "npm run test:coverage && http-server -c-1 -o -p 9875 ./coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ci": "npm run lint && npm run build && npm run test:coverage"
   },
   "dependencies": {
     "@angular/animations": "~8.2.14",
@@ -55,6 +58,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~8.6.2",
     "tslint": "~5.20.1",
-    "typescript": "~3.7.5"
+    "typescript": "~3.5.0"
   }
 }

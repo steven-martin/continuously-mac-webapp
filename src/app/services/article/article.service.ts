@@ -8,13 +8,10 @@ import { environment } from 'src/environments/environment.prod';
 @Injectable()
 export class ArticleService {
 
-  private articleUrl = environment.apiUrl;  // URL to web api
-
-  constructor(
-    private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.articleUrl);
+    return this.http.get<Article[]>(environment.apiUrl);
   }
 
 }
