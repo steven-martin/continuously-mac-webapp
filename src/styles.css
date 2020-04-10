@@ -70,11 +70,11 @@
             -moz-column-count: 1;
             -webkit-column-count: 1;
             column-count: 1;
-            width: 360px;
+            width: 720px;
         }
     
         .board {
-            width: 700px;
+            width: 720px;
             margin: 20px auto;
         }
         
@@ -92,30 +92,5 @@
     }
     
     
-    
-    @media only screen and (min-width: 1100px) {
-    
-        .articles {
-            -moz-column-count: 2;
-            -webkit-column-count: 2;
-            column-count: 2;
-            width: 760px;
-        }
-    
-        .board {
-            width: 1100px;
-            margin: 20px auto;
-        }
-    
-        .info {
-            text-align: left;
-        }
-    
-        .article {
-            -webkit-box-shadow: 13px 15px 15px -9px rgba(0,0,0,0.28);
-            -moz-box-shadow: 13px 15px 15px -9px rgba(0,0,0,0.28);
-            box-shadow: 13px 15px 15px -9px rgba(0,0,0,0.28);
-            border: 0px;
-        }
-    }
+
     
