@@ -1,11 +1,10 @@
 {
   "name": "continuously-mac-webapp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The Continuosly Mac news webapp",
   "author": "Steve Martin <steven_martin@me.com>",
   "license": "MIT",
   "keywords": [
-    "api",
     "news",
     "apple"
   ],
@@ -19,12 +18,13 @@
     "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test",
-    "test:headless": "ng test --browsers ChromeHeadless",
-    "test:coverage": "ng test --code-coverage --browsers ChromeHeadless",
+    "test:watch": "ng test --watch=true",
+    "test:headless": "ng test --browsers=ChromeHeadless",
+    "test:coverage": "ng test --code-coverage --browsers=ChromeHeadless",
     "test:report": "npm run test:coverage && http-server -c-1 -o -p 9875 ./coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ci": "npm run lint && npm run build && npm run test:coverage"
+    "ci": "npm run lint && npm run build:prod && npm run test:coverage"
   },
   "dependencies": {
     "@angular/animations": "~9.1.1",

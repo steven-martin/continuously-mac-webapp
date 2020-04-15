@@ -14,7 +14,9 @@ export class AppPage {
   }
 
   getArticles() {
-    return element(by.css('app-root app-page div.board app-articles div.articles')).getText();
+    return element(
+      by.css('app-root app-page div.board app-articles div.articles')
+    ).getText();
   }
 
   getFooter() {

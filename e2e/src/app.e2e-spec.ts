@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('The main Continuously main page', () => {
+describe('The main Continuously Mac page', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -24,7 +24,6 @@ describe('The main Continuously main page', () => {
 
   it('should display the developer credit in the footer', () => {
     page.navigateTo();
-    expect(page.getFooter()).toContain('Developed by');
-    expect(page.getFooter()).toContain('StevenPaulMartin.uk');
+    expect(page.getFooter()).toContain('Developed by Steven Martin');
   });
 });
