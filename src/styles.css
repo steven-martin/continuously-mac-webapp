@@ -1,96 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
-    font-family: HelveticaNeue;
-    src: url("/assets/fonts/HelveticaNeue-UltraLight.otf") format("opentype");
-    }
-    
-    @font-face {
-    font-family: SourceSansPro;
-    src: url("/assets/fonts/SourceSansPro-Regular.otf") format("opentype");
-    }
-    
-    @font-face {
-    font-family: SourceSansPro;
-    font-weight: light;
-    src: url("/assets/fonts/SourceSansPro-Light.otf") format("opentype");
-    }
-    
-    body {
-        margin: 0px;
-        padding: 0px;
-        font-family: SourceSansPro, Verdana, Sans-Serif;
-        height: 100%;
-        background-color: #FFFFFF;
-    }
-    
-    a {
-        text-decoration: none;
-        color:  #666;
-    }
-    
-    p {
-        margin: 0px;
-    }
-    
-    .highlight_link {
-        color: #1369BF;
-    }
-    
-    .highlight_name {
-        color: #EE9514;
-    }
-    
-    
-    @media only screen  {
-        .articles {
-            -moz-column-count: 1;
-            -webkit-column-count: 1;
-            column-count: 1;
-            width: 345px;
-        }
-    
-        .board {
-            width: 347px;
-            margin: 0px auto;
-        }
-    
-        .info {
-            text-align: center;
-        }
-    
-        .article {
-            border: 1px solid #ddd;
-        }
-    
-    }
-    
-    @media only screen and (min-width: 720px)  {
-        .articles {
-            -moz-column-count: 1;
-            -webkit-column-count: 1;
-            column-count: 1;
-            width: 720px;
-        }
-    
-        .board {
-            width: 720px;
-            margin: 20px auto;
-        }
-        
-        .info {
-            text-align: left;
-        }
-        
-        .article {
-            -webkit-box-shadow: 13px 15px 15px -9px rgba(0,0,0,0.28);
-            -moz-box-shadow: 13px 15px 15px -9px rgba(0,0,0,0.28);
-            box-shadow: 13px 15px 15px -9px rgba(0,0,0,0.28);
-            border: 0px;
-        }
-    
-    }
-    
-    
+  font-family: HelveticaNeue;
+  src: url('/assets/fonts/HelveticaNeue-UltraLight.otf') format('opentype');
+}
 
-    
+@font-face {
+  font-family: SourceSansPro;
+  src: url('/assets/fonts/SourceSansPro-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: SourceSansPro;
+  font-weight: light;
+  src: url('/assets/fonts/SourceSansPro-Light.otf') format('opentype');
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: SourceSansPro, Verdana, Sans-Serif;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+p {
+  margin: 0px;
+}
+
+.highlight_link {
+  color: #1369bf;
+}
+
+.highlight_name {
+  color: #ee9514;
+}
+
+@media only screen {
+  .articles {
+    width: 345px;
+  }
+
+  .board {
+    width: 347px;
+    margin: 0px auto;
+  }
+
+  .info {
+    text-align: center;
+  }
+
+  .article {
+    border: 1px solid #ddd;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .articles {
+    width: 720px;
+  }
+
+  .board {
+    width: 720px;
+    margin: 20px auto;
+  }
+
+  .info {
+    text-align: left;
+  }
+}
