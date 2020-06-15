@@ -14,3 +14,13 @@ a {
   text-decoration: underline;
   color: #666;
 }
+
+.appstore_button {
+  display: inline-block;
+  margin-top: 10px;
+  overflow: hidden;
+  background: url(https://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg)
+    no-repeat;
+  width: 165px;
+  height: 40px;
+}

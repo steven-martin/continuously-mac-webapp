@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { PageComponent } from './components/page/page.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { InfoComponent } from './components/info/info.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { ArticleService } from './services/article.service';
 
@@ -16,16 +15,10 @@ import { ArticleService } from './services/article.service';
     ArticlesComponent,
     PageComponent,
     FooterComponent,
-    InfoComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
-  ],
-  providers: [
-    ArticleService
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, HttpClientModule],
+  providers: [ArticleService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
