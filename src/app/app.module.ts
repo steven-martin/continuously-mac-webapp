@@ -8,6 +8,7 @@ import { PageComponent } from './components/page/page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { ArticleService } from './services/article.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ArticleService } from './services/article.service';
     FooterComponent,
     TimeAgoPipe,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [ArticleService],
   bootstrap: [AppComponent],
 })

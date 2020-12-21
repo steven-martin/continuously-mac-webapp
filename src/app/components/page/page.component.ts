@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page',
@@ -6,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page.component.css'],
 })
 export class PageComponent implements OnInit {
-  constructor() {}
+  filter: string;
 
-  ngOnInit() {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      if (params.filter) {
+        this.filter = params.filter;
+      }
+    });
+  }
 }

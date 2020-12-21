@@ -1,12 +1,15 @@
 <div class="articles">
-  <div class="header">
+  <div class="header" *ngIf="!validFilter">
     <h1>CONTINOUSLY MAC</h1>
     <p>
       Continuously Mac is a news aggregator dedicated to finding you the latest
       apple news from the very best Tech Journalists.
     </p>
+  </div>
+  <div class="header" *ngIf="validFilter">
+    <h1>Continuously Mac</h1>
     <p>
-      No complex categories to navigate, just a simple list of great Apple news.
+      The latest <b>{{ filter }}</b> news from the very best Tech Journalists.
     </p>
   </div>
   <div class="article" *ngFor="let article of articles">
