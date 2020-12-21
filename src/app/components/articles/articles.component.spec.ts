@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticlesComponent } from './articles.component';
@@ -32,7 +32,7 @@ describe('ArticlesComponent', () => {
   let component: ArticlesComponent;
   let fixture: ComponentFixture<ArticlesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ArticlesComponent, TimeAgoPipe],
       imports: [BrowserModule, HttpClientModule],
@@ -40,21 +40,21 @@ describe('ArticlesComponent', () => {
     }).compileComponents();
   }));
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     fixture = TestBed.createComponent(ArticlesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
 
   describe('Construction()', () => {
-    it('should create', async(() => {
+    it('should create', waitForAsync(() => {
       // Arrange, Act, Assert
       expect(component).toBeTruthy();
     }));
   });
 
   describe('ngOnInit()', () => {
-    it('should collect a valid article object from the API and update the articles property', async(() => {
+    it('should collect a valid article object from the API and update the articles property', waitForAsync(() => {
       // Arrange, Act
       component.ngOnInit();
       fixture.detectChanges();
@@ -66,7 +66,7 @@ describe('ArticlesComponent', () => {
   });
 
   describe('HTML Template', () => {
-    it('should display an article object with the correct values', async(() => {
+    it('should display an article object with the correct values', waitForAsync(() => {
       // Arrange, Act
       component.articles = mock;
       fixture.detectChanges();
@@ -97,7 +97,7 @@ describe('ArticlesComponent', () => {
       expect(source_photo[0].getAttribute('src')).toEqual(mock[0].source_photo);
     }));
 
-    it('should display an article object with the correct article link', async(() => {
+    it('should display an article object with the correct article link', waitForAsync(() => {
       // Arrange, Act
       component.articles = mock;
       fixture.detectChanges();
@@ -111,7 +111,7 @@ describe('ArticlesComponent', () => {
       );
     }));
 
-    it('should display an article object with the correct source link', async(() => {
+    it('should display an article object with the correct source link', waitForAsync(() => {
       // Arrange, Act
       component.articles = mock;
       fixture.detectChanges();
