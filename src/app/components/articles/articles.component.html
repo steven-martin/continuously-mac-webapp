@@ -1,47 +1,15 @@
-<div class="articles">
-  <div class="header" *ngIf="!validFilter">
+<ul class="articles">
+  <li class="header">
     <h1>CONTINOUSLY MAC</h1>
     <p>
       Continuously Mac is a news aggregator dedicated to finding you the latest
       apple news from the very best Tech Journalists.
     </p>
-  </div>
-  <div class="header" *ngIf="validFilter">
-    <h1>Continuously Mac</h1>
-    <p>
-      The latest <b>{{ filter }}</b> news from the very best Tech Journalists.
-    </p>
-  </div>
-  <div class="article" *ngFor="let article of articles">
-    <a href="{{ article.article_link }}" data-qa="article_link">
-      <div class="image_container">
-        <img src="{{ article.article_photo }}" class="article_image" />
-      </div>
-      <div class="badge_news_container">
-        <img
-          src="/assets/images/badges/{{ article.category_badge }}.png"
-          class="badge_image"
-        />
-      </div>
-      <div class="badge_description_container">
-        <span data-qa="article_category">{{ article.category }}</span>
-      </div>
-    </a>
-    <div class="article_text_container">
-      <a href="{{ article.article_link }}">
-        <div class="article_description">
-          <p>{{ article.article_description }}</p>
-        </div>
-      </a>
-      <a href="{{ article.source_url }}" data-qa="source_url">
-        <div class="article_source_section">
-          <img src="{{ article.source_photo }}" class="article_byline_image" />
-          <p>
-            {{ article.source_name }}<br />
-            <span class="post">{{ article.date | timeAgo }}</span>
-          </p>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+  </li>
+  <li class="filter" *ngIf="filter">
+    <p>Filtering on the latest news for <b>{{ filter }}</b>.</p>
+  </li>
+  <ng-tempplate class="article" *ngFor="let article of articles">
+    <app-article [article]="article"></app-article>
+  </ng-tempplate>
+</ul>

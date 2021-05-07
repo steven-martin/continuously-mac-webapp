@@ -9,35 +9,24 @@ import { environment } from '../../environments/environment';
 export class ArticleService {
   constructor(private http: HttpClient) {}
 
-  getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(environment.apiUrl);
+  public headlines: Observable<Article[]> ;
+  public catagories: Observable<any[]>;
+
+  updateArticles(): void {
+    this.headlines = this.http.get<Article[]>(environment.apiUrl);
+    this.catagories = this.http.get<any[]>(environment.apiUrl + 'categories/');
   }
 
-  getCategories(): Observable<string[]> {
-    return this.http.get<string[]>(environment.apiUrl + '/categories');
-  }
-
-  getFilters(): string[] {
+  getCategoriesList(): string[] {
     return [
       'iPhone',
       'iPad',
-      'iOS',
-      'MacBook',
-      'iMac',
       'Mac',
-      'macOS',
-      'Apple-Watch',
-      'watchOS',
-      'Apple-TV',
-      'tvOS',
-      'Apple-Music',
-      'App-Store',
-      'WWDC',
-      'Siri',
-      'Safari',
-      'iBooks',
-      'iTunes',
-      'iPod',
+      'Watch',
+      'Apple',
+      'TV',
+      'Music',
+      'WWDC'
     ];
   }
 }
