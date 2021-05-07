@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
 
@@ -6,7 +6,7 @@ describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [FooterComponent],
     }).compileComponents();
@@ -19,14 +19,14 @@ describe('FooterComponent', () => {
   });
 
   describe('Construction()', () => {
-    it('should create', async(() => {
+    it('should create', waitForAsync(() => {
       // Arrange, Act, Assert
       expect(component).toBeTruthy();
     }));
   });
 
   describe('HTML Template', () => {
-    it('should display the footer', async(() => {
+    it('should display the footer', waitForAsync(() => {
       // Arrange, Act
       fixture.detectChanges();
 

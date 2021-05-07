@@ -19,7 +19,7 @@ describe('The main Continuously Mac page', () => {
 
   it('should display at least one article', () => {
     page.navigateTo();
-    expect(page.getArticles()).not.toBeNull();
+    expect(page.getHeadlineArticles()).not.toBeNull();
   });
 
   it('should display the developer credit in the footer', () => {

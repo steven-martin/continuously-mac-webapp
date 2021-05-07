@@ -1,14 +1,14 @@
-import { async } from '@angular/core/testing';
+import { waitForAsync } from '@angular/core/testing';
 import { TimeAgoPipe } from './time-ago.pipe';
 
 describe('TimeAgoPipe', () => {
   let pipe: TimeAgoPipe;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     pipe = new TimeAgoPipe();
   }));
 
-  it('providing date of less than 20 seconds old expecting message of Just Now.', async(() => {
+  it('providing date of less than 20 seconds old expecting message of Just Now.', waitForAsync(() => {
     // Arrange
     const baseTime = new Date();
 
@@ -16,7 +16,7 @@ describe('TimeAgoPipe', () => {
     expect(pipe.transform(baseTime.toISOString())).toBe('Just Now.');
   }));
 
-  it('providing date of 70 seconds old returns correct message in seconds', async(() => {
+  it('providing date of 70 seconds old returns correct message in seconds', waitForAsync(() => {
     // Arrange
     const baseTime = new Date();
     baseTime.setSeconds(baseTime.getSeconds() - 70);
@@ -27,7 +27,7 @@ describe('TimeAgoPipe', () => {
     );
   }));
 
-  it('providing date of 3 minutes old returns correct message in minutes', async(() => {
+  it('providing date of 3 minutes old returns correct message in minutes', waitForAsync(() => {
     // Arrange
     const baseTime = new Date();
     baseTime.setMinutes(baseTime.getMinutes() - 3);
@@ -38,7 +38,7 @@ describe('TimeAgoPipe', () => {
     );
   }));
 
-  it('providing date of 3 hours old returns correct message in hours', async(() => {
+  it('providing date of 3 hours old returns correct message in hours', waitForAsync(() => {
     // Arrange
     const baseTime = new Date();
     baseTime.setHours(baseTime.getHours() - 3);
@@ -49,7 +49,7 @@ describe('TimeAgoPipe', () => {
     );
   }));
 
-  it('providing date of 3 day old returns correct message in days', async(() => {
+  it('providing date of 3 day old returns correct message in days', waitForAsync(() => {
     // Arrange
     const baseTime = new Date();
     baseTime.setDate(baseTime.getDate() - 3);

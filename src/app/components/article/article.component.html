@@ -1,0 +1,25 @@
+<li>
+    <div class="article-details">
+      <a href="{{ article.article_link }}" data-qa="article-link">
+        <img src="{{ article.article_photo }}" class="article-image" />
+        <div class="badge-image">
+          <img src="/assets/images/badges/{{ article.category_badge }}.png" />
+        </div>
+        <div class="badge-description">{{ article.category }}</div>
+      </a>
+      <a href="{{ article.article_link }}">
+        <div class="article-description">
+          {{ article.article_description }}
+        </div>
+      </a>
+      <a href="{{ article.source_url }}" data-qa="source-url">
+        <div class="article-footer">
+          <img src="{{ article.source_photo }}" class="article-byline-image" />
+          <p>
+            {{ article.source_name }}<br />
+            <span class="post">{{ article.date | timeAgo }}</span>
+          </p>
+        </div>
+      </a>
+    </div>
+  </li>

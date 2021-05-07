@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticlesComponent } from './articles.component';
@@ -32,95 +32,101 @@ describe('ArticlesComponent', () => {
   let component: ArticlesComponent;
   let fixture: ComponentFixture<ArticlesComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ArticlesComponent, TimeAgoPipe],
-      imports: [BrowserModule, HttpClientModule],
-      providers: [{ provide: ArticleService, useValue: articleServiceSpy }],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ArticlesComponent, TimeAgoPipe],
+        imports: [BrowserModule, HttpClientModule],
+        providers: [{ provide: ArticleService, useValue: articleServiceSpy }],
+      }).compileComponents();
+    })
+  );
 
-  beforeEach(async(() => {
-    fixture = TestBed.createComponent(ArticlesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      fixture = TestBed.createComponent(ArticlesComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    })
+  );
 
   describe('Construction()', () => {
-    it('should create', async(() => {
-      // Arrange, Act, Assert
-      expect(component).toBeTruthy();
-    }));
-  });
-
-  describe('ngOnInit()', () => {
-    it('should collect a valid article object from the API and update the articles property', async(() => {
-      // Arrange, Act
-      component.ngOnInit();
-      fixture.detectChanges();
-
-      // Assert
-      expect(articleServiceSpy.getArticles).toHaveBeenCalled();
-      expect(component.articles).toEqual(mock);
-    }));
+    it(
+      'should create',
+      waitForAsync(() => {
+        // Arrange, Act, Assert
+        expect(component).toBeTruthy();
+      })
+    );
   });
 
   describe('HTML Template', () => {
-    it('should display an article object with the correct values', async(() => {
-      // Arrange, Act
-      component.articles = mock;
-      fixture.detectChanges();
+    it(
+      'should display an article object with the correct values',
+      waitForAsync(() => {
+        // Arrange, Act
+        component.articles = mock;
+        fixture.detectChanges();
 
-      // Assert
-      const article_photo = fixture.nativeElement.querySelectorAll(
-        '.article_image'
-      );
-      expect(article_photo[0].getAttribute('src')).toEqual(
-        mock[0].article_photo
-      );
+        // Assert
+        const article_photo = fixture.nativeElement.querySelectorAll(
+          '.article_image'
+        );
+        expect(article_photo[0].getAttribute('src')).toEqual(
+          mock[0].article_photo
+        );
 
-      const article_category = fixture.nativeElement.querySelectorAll(
-        '[data-qa="article_category"]'
-      );
-      expect(article_category[0].textContent).toEqual(mock[0].category);
+        const article_category = fixture.nativeElement.querySelectorAll(
+          '[data-qa="article_category"]'
+        );
+        expect(article_category[0].textContent).toEqual(mock[0].category);
 
-      const article_description = fixture.nativeElement.querySelectorAll(
-        '.article_description'
-      );
-      expect(article_description[0].textContent).toContain(
-        mock[0].article_description
-      );
+        const article_description = fixture.nativeElement.querySelectorAll(
+          '.article_description'
+        );
+        expect(article_description[0].textContent).toContain(
+          mock[0].article_description
+        );
 
-      const source_photo = fixture.nativeElement.querySelectorAll(
-        '.article_byline_image'
-      );
-      expect(source_photo[0].getAttribute('src')).toEqual(mock[0].source_photo);
-    }));
+        const source_photo = fixture.nativeElement.querySelectorAll(
+          '.article_byline_image'
+        );
+        expect(source_photo[0].getAttribute('src')).toEqual(
+          mock[0].source_photo
+        );
+      })
+    );
 
-    it('should display an article object with the correct article link', async(() => {
-      // Arrange, Act
-      component.articles = mock;
-      fixture.detectChanges();
+    it(
+      'should display an article object with the correct article link',
+      waitForAsync(() => {
+        // Arrange, Act
+        component.articles = mock;
+        fixture.detectChanges();
 
-      // Assert
-      const article_link = fixture.nativeElement.querySelectorAll(
-        '[data-qa="article_link"]'
-      );
-      expect(article_link[0].getAttribute('href')).toEqual(
-        mock[0].article_link
-      );
-    }));
+        // Assert
+        const article_link = fixture.nativeElement.querySelectorAll(
+          '[data-qa="article_link"]'
+        );
+        expect(article_link[0].getAttribute('href')).toEqual(
+          mock[0].article_link
+        );
+      })
+    );
 
-    it('should display an article object with the correct source link', async(() => {
-      // Arrange, Act
-      component.articles = mock;
-      fixture.detectChanges();
+    it(
+      'should display an article object with the correct source link',
+      waitForAsync(() => {
+        // Arrange, Act
+        component.articles = mock;
+        fixture.detectChanges();
 
-      // Assert
-      const source_url = fixture.nativeElement.querySelectorAll(
-        '[data-qa="source_url"]'
-      );
-      expect(source_url[0].getAttribute('href')).toEqual(mock[0].source_url);
-    }));
+        // Assert
+        const source_url = fixture.nativeElement.querySelectorAll(
+          '[data-qa="source_url"]'
+        );
+        expect(source_url[0].getAttribute('href')).toEqual(mock[0].source_url);
+      })
+    );
   });
 });

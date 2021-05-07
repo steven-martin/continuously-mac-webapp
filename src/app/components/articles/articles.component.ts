@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren } from '@angular/core';
+import { ArticleService } from 'src/app/services/article.service';
 import { Article } from '../../model/article';
-import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css'],
+  styleUrls: ['./articles.component.scss'],
 })
 export class ArticlesComponent implements OnInit {
-  articles: Article[];
 
-  constructor(private articleService: ArticleService) {}
+  @Input() filter: string;
+  @Input() articles: Article[];
 
-  getArticles(): void {
-    this.articleService
-      .getArticles()
-      .subscribe((articles) => (this.articles = articles));
+  public filters: string[];
+
+  constructor(private articleService: ArticleService) {
+    this.filters = articleService.getCategoriesList(); 
   }
 
-  ngOnInit() {
-    this.getArticles();
-  }
+  ngOnInit() {}
 }

@@ -1,8 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PageComponent } from './page.component';
-import { ArticlesComponent } from '../articles/articles.component';
-import { InfoComponent } from '../info/info.component';
+import { ArticlesComponent } from '../../components/articles/articles.component';
 import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,22 +30,23 @@ const mock: Article[] = [
 ];
 articleServiceSpy.getArticles.and.returnValue(of(mock));
 
-describe('PageComponent', () => {
+describe('BoardComponent', () => {
   let component: PageComponent;
   let fixture: ComponentFixture<PageComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        PageComponent,
-        ArticlesComponent,
-        InfoComponent,
-        TimeAgoPipe,
-      ],
-      imports: [BrowserModule, HttpClientModule],
-      providers: [{ provide: ArticleService, useValue: articleServiceSpy }],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          PageComponent,
+          ArticlesComponent,
+          TimeAgoPipe,
+        ],
+        imports: [BrowserModule, HttpClientModule],
+        providers: [{ provide: ArticleService, useValue: articleServiceSpy }],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PageComponent);
@@ -59,5 +59,20 @@ describe('PageComponent', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });
+  });
+
+  describe('ngOnInit()', () => {
+    it(
+      'should collect a valid article object from the API and update the articles property',
+      waitForAsync(() => {
+        // Arrange, Act
+        component.ngOnInit();
+        fixture.detectChanges();
+
+        // Assert
+        expect(articleServiceSpy.getArticles).toHaveBeenCalled();
+        // expect(component.articles).toEqual(mock);
+      })
+    );
   });
 });

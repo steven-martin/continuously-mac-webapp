@@ -9,7 +9,24 @@ import { environment } from '../../environments/environment';
 export class ArticleService {
   constructor(private http: HttpClient) {}
 
-  getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(environment.apiUrl);
+  public headlines: Observable<Article[]> ;
+  public catagories: Observable<any[]>;
+
+  updateArticles(): void {
+    this.headlines = this.http.get<Article[]>(environment.apiUrl);
+    this.catagories = this.http.get<any[]>(environment.apiUrl + 'categories/');
+  }
+
+  getCategoriesList(): string[] {
+    return [
+      'iPhone',
+      'iPad',
+      'Mac',
+      'Watch',
+      'Apple',
+      'TV',
+      'Music',
+      'WWDC'
+    ];
   }
 }
