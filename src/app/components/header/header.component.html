@@ -8,15 +8,15 @@
         >{{ catagory }}</div>
   </div>
   <div class="catagories mobile-nav">
-    <div #hamburger class="hamburger" (click)="menuToggle()" [ngClass]="status ? 'open' : null">
+    <div #hamburger class="hamburger" (click)="menuToggle()" [ngClass]="mobileMenuOpen ? 'open' : null">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
     </div>
-    <div class="mobile-menu" [ngClass]="status ? 'open' : null">
+    <div class="mobile-menu" [ngClass]="mobileMenuOpen ? 'open' : null">
       <div class="catagory" [class.selected]="!selected" routerLink='/'>Latest</div>
       <div *ngFor="let catagory of catagories"
-        (click)="status=false"
+        (click)="mobileMenuOpen=false"
         routerLink="/{{ catagory }}"
         class="catagory"
         [class.selected]="selected === catagory"

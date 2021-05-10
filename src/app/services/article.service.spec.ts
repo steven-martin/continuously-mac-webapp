@@ -6,6 +6,7 @@ import {
 
 import { ArticleService } from './article.service';
 import { environment } from 'src/environments/environment';
+import { Article } from '../model/article';
 
 describe('ArticleService', () => {
   let service: ArticleService;
@@ -31,16 +32,17 @@ describe('ArticleService', () => {
     });
   });
 
-  describe('getArticles()', () => {
-    it('should be call the API and return the article payload', () => {
+  describe('updateArticles()', () => {
+    it('should be call the API and update the headlines', () => {
       // Arrange
-      const mock = {
+      const mock: Article = {
         source_name: 'mock',
         source_photo: 'http://mock.com',
+        source_url: 'http://mock.com',
         article_description: 'mock article',
         article_link: 'http://mock.com',
         article_photo: 'http://mock.com',
-        date: new Date(),
+        date: '',
         timestamp: 0,
         score: 0,
         category: '',
@@ -49,14 +51,79 @@ describe('ArticleService', () => {
       };
 
       // Act
-      service.getArticles().subscribe((data: any) => {
+      service.updateArticles();
+      service.headlines.subscribe((data: any) => {
         expect(data).toBe(mock);
       });
 
       // Assert
-      const req = httpTestingController.expectOne(environment.apiUrl);
-      expect(req.request.method).toEqual('GET');
-      req.flush(mock);
+      const reqHeadline = httpTestingController.expectOne(environment.apiUrl);
+      expect(reqHeadline.request.method).toEqual('GET');
+      reqHeadline.flush(mock);
+    });
+
+    it('should be call the API and update the catagories', () => {
+      // Arrange
+      const mock = {
+        news: [
+          {
+            source_name: 'mock',
+            source_photo: 'http://mock.com',
+            source_url: 'http://mock.com',
+            article_description: 'mock article',
+            article_link: 'http://mock.com',
+            article_photo: 'http://mock.com',
+            date: '',
+            timestamp: 0,
+            score: 0,
+            category: '',
+            category_badge: '',
+            tags: '',
+          }
+        ]
+      }
+
+      // Act
+      service.updateArticles();
+      service.catagories.subscribe((data: any) => {
+        expect(data).toBe(mock);
+      });
+
+      // Assert
+      const reqHeadline = httpTestingController.expectOne(environment.apiUrl + 'categories/');
+      expect(reqHeadline.request.method).toEqual('GET');
+      reqHeadline.flush(mock);
+    });
+  });
+
+  describe('updateArticles()', () => {
+    it('should be call the API and update the headlines', () => {
+      // Arrange
+      const mock: Article = {
+        source_name: 'mock',
+        source_photo: 'http://mock.com',
+        source_url: 'http://mock.com',
+        article_description: 'mock article',
+        article_link: 'http://mock.com',
+        article_photo: 'http://mock.com',
+        date: '',
+        timestamp: 0,
+        score: 0,
+        category: '',
+        category_badge: '',
+        tags: '',
+      };
+
+      // Act
+      service.updateArticles();
+      service.headlines.subscribe((data: any) => {
+        expect(data).toBe(mock);
+      });
+
+      // Assert
+      const reqHeadline = httpTestingController.expectOne(environment.apiUrl);
+      expect(reqHeadline.request.method).toEqual('GET');
+      reqHeadline.flush(mock);
     });
   });
 });

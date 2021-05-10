@@ -8,6 +8,7 @@ No complex categories, just a simple list of great Apple news.
 
 - The latest apple news from the very best Tech Journalists.
 - Articles are collected from a [dedicated API](https://github.com/steven-martin/continuously-mac-api), which is updated every 15 minutes.
+- Selectable Catagories (based on the data collected)
 
 ## Quick Start
 
@@ -34,6 +35,6 @@ Run `npm run lint` to anaylise the project with eslint.
 
 Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Run `npm run test-report` to produce a unit test coverage report and will server it on `http://127.0.0.1:9875`.
+Run `npm run test:report` to produce a unit test coverage report and will server it on `http://127.0.0.1:9875`.
 
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).

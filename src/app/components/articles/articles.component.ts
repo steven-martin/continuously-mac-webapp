@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ViewChildren } from '@angular/core';
-import { ArticleService } from 'src/app/services/article.service';
 import { Article } from '../../model/article';
 
 @Component({
@@ -12,11 +11,8 @@ export class ArticlesComponent implements OnInit {
   @Input() filter: string;
   @Input() articles: Article[];
 
-  public filters: string[];
+  constructor() {}
 
-  constructor(private articleService: ArticleService) {
-    this.filters = articleService.getCategoriesList(); 
+  ngOnInit() {
   }
-
-  ngOnInit() {}
 }

@@ -16,17 +16,4 @@ export class ArticleService {
     this.headlines = this.http.get<Article[]>(environment.apiUrl);
     this.catagories = this.http.get<any[]>(environment.apiUrl + 'categories/');
   }
-
-  getCategoriesList(): string[] {
-    return [
-      'iPhone',
-      'iPad',
-      'Mac',
-      'Watch',
-      'Apple',
-      'TV',
-      'Music',
-      'WWDC'
-    ];
-  }
 }
