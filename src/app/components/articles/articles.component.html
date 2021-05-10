@@ -9,7 +9,8 @@
   <li class="filter" *ngIf="filter">
     <p>Filtering on the latest news for <b>{{ filter }}</b>.</p>
   </li>
-  <ng-tempplate class="article" *ngFor="let article of articles">
+  <div class="article" *ngFor="let article of articles">
     <app-article [article]="article"></app-article>
-  </ng-tempplate>
+  </div>
 </ul>
+

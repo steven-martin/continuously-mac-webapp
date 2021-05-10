@@ -12,12 +12,11 @@ export class HeaderComponent {
 
   @ViewChild('hamburger') hamburger: ElementRef;
 
-  status: boolean = false;
+  mobileMenuOpen: boolean = false;
 
   constructor() {}
 
   public menuToggle() {
-    this.status = !this.status;  
-    console.log('status', this.status);
+    this.mobileMenuOpen = !this.mobileMenuOpen;  
   }
 }

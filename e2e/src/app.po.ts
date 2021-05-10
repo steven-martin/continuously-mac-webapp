@@ -15,7 +15,7 @@ export class AppPage {
 
   getArticles() {
     return element(
-      by.css('app-root app-page div.board app-articles div.articles')
+      by.css('app-root app-page div.page app-articles div.article-details')
     ).getText();
   }
 

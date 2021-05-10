@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 
 const articleServiceSpy = jasmine.createSpyObj('ArticleService', [
   'getArticles',
+  'getCategoriesList',
 ]);
 const mock: Article[] = [
   {
@@ -62,71 +63,62 @@ describe('ArticlesComponent', () => {
 
   describe('HTML Template', () => {
     it(
-      'should display an article object with the correct values',
+      'should display the header section',
       waitForAsync(() => {
         // Arrange, Act
-        component.articles = mock;
         fixture.detectChanges();
 
         // Assert
-        const article_photo = fixture.nativeElement.querySelectorAll(
-          '.article_image'
+        const section = fixture.nativeElement.querySelector(
+          '.header'
         );
-        expect(article_photo[0].getAttribute('src')).toEqual(
-          mock[0].article_photo
-        );
-
-        const article_category = fixture.nativeElement.querySelectorAll(
-          '[data-qa="article_category"]'
-        );
-        expect(article_category[0].textContent).toEqual(mock[0].category);
-
-        const article_description = fixture.nativeElement.querySelectorAll(
-          '.article_description'
-        );
-        expect(article_description[0].textContent).toContain(
-          mock[0].article_description
-        );
-
-        const source_photo = fixture.nativeElement.querySelectorAll(
-          '.article_byline_image'
-        );
-        expect(source_photo[0].getAttribute('src')).toEqual(
-          mock[0].source_photo
-        );
+        expect(section).toBeTruthy();
       })
     );
 
     it(
-      'should display an article object with the correct article link',
+      'should display the filter section if filter is selected',
       waitForAsync(() => {
         // Arrange, Act
-        component.articles = mock;
+        component.filter = 'news';
         fixture.detectChanges();
 
         // Assert
-        const article_link = fixture.nativeElement.querySelectorAll(
-          '[data-qa="article_link"]'
+        const section = fixture.nativeElement.querySelector(
+          '.filter'
         );
-        expect(article_link[0].getAttribute('href')).toEqual(
-          mock[0].article_link
-        );
+        expect(section).toBeTruthy();
       })
     );
 
     it(
-      'should display an article object with the correct source link',
+      'should NOT display the filter section if filter is selected',
       waitForAsync(() => {
         // Arrange, Act
-        component.articles = mock;
+        component.filter = null;
         fixture.detectChanges();
 
         // Assert
-        const source_url = fixture.nativeElement.querySelectorAll(
-          '[data-qa="source_url"]'
+        const section = fixture.nativeElement.querySelector(
+          '.filter'
         );
-        expect(source_url[0].getAttribute('href')).toEqual(mock[0].source_url);
+        expect(section).toBeFalsy();
       })
     );
   });
+
+  it(
+    'should display the article section',
+    waitForAsync(() => {
+      // Arrange, Act
+      component.articles = mock;
+      fixture.detectChanges();
+
+      // Assert
+      const section = fixture.nativeElement.querySelector(
+        '.articles'
+      );
+      expect(section).toBeTruthy();
+    })
+  );
 });
