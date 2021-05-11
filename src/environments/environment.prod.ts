@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://continuously-mac.com/api/'
+  apiUrl: 'https://www.continuously-mac.com/api/'
 };
